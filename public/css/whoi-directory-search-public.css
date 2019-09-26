@@ -1,0 +1,160 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+*/
+
+/* Search form */
+
+#department_search {
+    float: left;
+    border: 1px solid #173656;
+    border-radius: 0px ;
+    color: #ffffff ;
+    font-size: 16px;
+    height: 50px ;
+    margin: 0 20px 0 0 ;
+    background: #27668f ;
+}
+
+#user_search_terms {
+    display: inline-block;
+    border: 1px solid #27558f;
+    box-shadow: none;
+    color: #333333;
+    float: left;
+    border-radius: 0px ;
+    font-size: 16px;
+    height: 50px;
+    padding: 0 0 0 8px;
+    width: 50%;
+}
+
+#search-btn-submit {
+    background: #27668f !important;
+    border: 1px solid #27668f !important;
+    border-radius: 0 !important;
+    box-shadow: none;
+    box-sizing: inherit;
+    display: inline-block;
+    float: left;
+    height: 50px !important;
+    box-shadow: none;
+    left: -48px;
+    margin: 0;
+    padding: 0 16px;
+    position: relative;
+    cursor: pointer;
+}
+
+#search-btn-submit:active,
+#search-btn-submit:focus {
+    top: 0;
+}
+
+#search-btn-submit .fa-search:before {
+    color: white;
+    font-size: 1.4em;
+
+}
+
+#clear-srch {
+    float: left;
+    height: 40px;
+    margin-top: 2px;
+    position: relative;
+    left: -32px;
+}
+
+#clear-srch i {
+    font-size: 23px;
+    position: relative;
+    top: -2px;
+    color: #333333 !important;
+    left: 15px !important;
+}
+
+#clear-srch-text {
+    color: #333333 !important;
+    font-size: 12px !important;
+    left: 7px !important;
+    letter-spacing: 1px;
+    position: absolute;
+    top: 28px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px;
+    position: absolute;
+}
+
+#whoi-directory-search-feedback {
+    clear: both;
+}
+
+#whoi-directory-search-results {
+    margin-top: 20px;
+}
+
+#whoi-directory-search-results table {
+    border: none;
+}
+
+#whoi-directory-search-results th {
+    color: black;
+    background: none;
+}
+
+.staff-image {
+    margin-right: 20px;
+    float: left;
+}
+
+.staff-image img {
+    max-width: 220px;
+}
+
+.staff-profile {
+     overflow: hidden;
+}
+
+.staff-profile h3 {
+    margin: 1.5em 0 .25em 0;
+}
+
+.staff-profile br {
+    display: none;
+}
+
+.cv a {
+    display: inline-block;
+    background: #27668f ;
+    border: 1px solid #27668f ;
+    padding: 2px 10px;
+    color: white;
+}
+
+.cv a:hover {
+    text-decoration: none;
+    background: #8dc7f0 ;
+    color: white;
+}
+
+/* Who We Are Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    #user_search_terms {
+        width: 40%;
+    }
+}
+
+/*  Who We Are Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    #department_search {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    #user_search_terms {
+        width: 70%;
+    }
+    .staff-image {
+        margin-right: 0px;
+        float: none;
+    }
+}
