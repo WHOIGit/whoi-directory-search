@@ -87,7 +87,7 @@ $whoi_directory_search_nonce = wp_create_nonce( 'whoi_directory_search_nonce' );
 
             $('#user_search_terms').val(searchTerms);
             $('#department_search').val(searchDept);
-            document.getElementById('search-btn-submit').click();
+            $('#search-btn-submit').click();
 
         }
     });
