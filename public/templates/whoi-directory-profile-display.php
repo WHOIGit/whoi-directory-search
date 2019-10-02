@@ -89,7 +89,7 @@ if ( !empty( get_query_var( 'username' ) ) ) {
                     var output_site = `<p><strong>Lab/Group Site:</strong> <a href="${value.labgroup_site}" target="_blank">${value.labgroup_site}</a></p>`
                 }
 
-                if (value.output_education) {
+                if (value.education) {
                     var output_education = `<h3>Education</h3> ${value.education}`
                 }
 
