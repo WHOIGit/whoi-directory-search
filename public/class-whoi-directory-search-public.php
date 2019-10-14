@@ -114,6 +114,21 @@ class Whoi_Directory_Search_Public {
 	}
 
     /**
+	 * Return display template for advanced search form for internal users
+	 *
+	 * @since 		1.0.0
+	 * @return 		void
+	 */
+	public function search_advanced_form_display() {
+
+        // Start output buffering for shortcode display
+        ob_start();
+		include( plugin_dir_path( __FILE__ ) . 'partials/whoi-directory-search-advanced-form-display.php' );
+        return ob_get_clean();
+
+	}
+
+    /**
 	 * Handles the directory form submit and response if no JWT token is available
 	 * @since    1.0.0
 	 */
@@ -234,6 +249,7 @@ class Whoi_Directory_Search_Public {
     public function register_shortcodes() {
 
     	add_shortcode( 'whoi_directory_search_form', array( $this, 'search_form_display' ) );
+        add_shortcode( 'whoi_directory_search_advanced_form', array( $this, 'search_advanced_form_display' ) );
         add_shortcode( 'whoi_directory_people_by_department', array( $this, 'people_by_department_display' ) );
 
     } // register_shortcodes()

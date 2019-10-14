@@ -5,7 +5,11 @@
 
 /* Search form */
 
-#department_search {
+.whoi-directory-search-advanced-form-container .row {
+    margin-bottom: 30px;
+}
+
+#whoi-directory-search-form select {
     float: left;
     border: 1px solid #173656;
     border-radius: 0px ;
@@ -16,17 +20,29 @@
     background: #27668f ;
 }
 
-#user_search_terms {
+.whoi-directory-search-advanced-form-container select {
+    width: 100%;
+}
+
+#whoi-directory-search-form input[type=text] {
     display: inline-block;
     border: 1px solid #27558f;
     box-shadow: none;
     color: #333333;
-    float: left;
     border-radius: 0px ;
     font-size: 16px;
     height: 50px;
     padding: 0 0 0 8px;
+}
+
+.whoi-directory-search-form-container #user_search_terms {
+    float: left;
     width: 50%;
+}
+
+.advanced-search-btns {
+    float: right;
+    margin-right: 30px;
 }
 
 #search-btn-submit {
@@ -39,7 +55,6 @@
     float: left;
     height: 50px !important;
     box-shadow: none;
-    left: -48px;
     margin: 0;
     padding: 0 16px;
     position: relative;
@@ -57,12 +72,32 @@
 
 }
 
+.whoi-directory-search-form-container #search-btn-submit {
+    left: -48px;
+}
+
+.whoi-directory-search-advanced-form-container #search-btn-submit {
+    background: none !important;
+    border: none !important;
+    margin-right: 20px;
+}
+
+.whoi-directory-search-advanced-form-container #search-btn-submit .fa-search:before {
+    color: #333333;
+    font-size: 1.9em;
+}
+
+.whoi-directory-search-advanced-form-container #search-btn-submit i {
+    position: relative;
+    top: -10px;
+    color: #333333 !important;
+}
+
 #clear-srch {
     float: left;
     height: 40px;
     margin-top: 2px;
     position: relative;
-    left: -32px;
 }
 
 #clear-srch i {
@@ -73,16 +108,32 @@
     left: 15px !important;
 }
 
-#clear-srch-text {
+.search-btn-text {
     color: #333333 !important;
     font-size: 12px !important;
-    left: 7px !important;
     letter-spacing: 1px;
     position: absolute;
-    top: 28px !important;
     text-transform: uppercase !important;
     letter-spacing: 1px;
     position: absolute;
+}
+
+.advanced-search-btns .search-btn-text {
+    font-size: 13px !important;
+}
+
+#search-btn-submit .search-btn-text {
+    left: 5px !important;
+    top: 31px !important;
+}
+
+#clear-search-btn .search-btn-text {
+    left: 7px !important;
+    top: 28px !important;
+}
+
+.whoi-directory-search-form-container #clear-srch {
+    left: -32px;
 }
 
 #whoi-directory-search-feedback {

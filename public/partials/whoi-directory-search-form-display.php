@@ -25,9 +25,10 @@ $whoi_directory_search_nonce = wp_create_nonce( 'whoi_directory_search_nonce' );
 
 
 			<input type="hidden" name="action" value="whoi_directory_search_form_response">
+            <input type="hidden" name="form_type" id="form_type" value="basic">
 			<input type="hidden" name="whoi_directory_search_nonce" value="<?php echo $whoi_directory_search_nonce ?>" />
 
-            <select name="department_search" id="department_search">
+            <select name="search_dept" id="search_dept">
                 <option value="">Select a Department</option>
                 <option value="ACADEMIC PROGRAMS OFFICE">Academic Programs Office</option>
                 <option value="ADMINISTRATION">Administration</option>
@@ -62,7 +63,7 @@ $whoi_directory_search_nonce = wp_create_nonce( 'whoi_directory_search_nonce' );
             <div id="clear-srch">
                 <a href="#" id="clear-search-btn">
                     <i class="fa fa-times-circle" aria-hidden="true"></i>
-                    <div id="clear-srch-text">Clear</div>
+                    <div class="search-btn-text">Clear</div>
                 </a>
             </div>
       </form>
@@ -73,6 +74,7 @@ $whoi_directory_search_nonce = wp_create_nonce( 'whoi_directory_search_nonce' );
 
 <div id="whoi-directory-search-results"></div>
 
+<!--
 <script>
 
 (function( $ ) {
@@ -93,3 +95,4 @@ $whoi_directory_search_nonce = wp_create_nonce( 'whoi_directory_search_nonce' );
     });
 })( jQuery );
 </script>
+-->
