@@ -4,7 +4,6 @@
 	 */
 
     $(function() {
-
         var urlParams = new URLSearchParams(window.location.search);
 
         if ( urlParams.has('staffSearch') ) {
@@ -48,16 +47,6 @@
         	    window.history.replaceState({}, document.title, clean_uri);
         	}
         });
-
-
-        // Load the profile page with javascript to keep it out of browser History
-        /*
-        $('#whoi-directory-search-results').on('click', '#profile-link', function (event) {
-            event.preventDefault();
-            var url = $(this).attr('href');
-            console.log(url);
-            window.location.replace(url);
-        });*/
 
         // Submit the search form
         $('#whoi-directory-search-form').submit( function( event ) {
@@ -105,14 +94,19 @@
                     }
                   })
                   .then(data => {
-                      console.log(data);
                       if (data) {
+
+                          if (formType == 'advanced') {
+                              var tableHeader = '<th>Name</th> <th>Position</th> <th>Phone</th> <th>Department</th> <th>Location</th> <th>Mail Stop</th>';
+                          } else {
+                              var tableHeader = '<th>Name</th> <th>Position</th> <th>Department</th> <th>Location</th>';
+                          }
 
                           var tableOutput = `
                               <table class="table table-striped">
                                   <thead>
                                       <tr>
-                                          <th>Name</th> <th>Position</th> <th>Department</th> <th>Location</th>
+                                          ${tableHeader}
                                       </tr>
                                   </thead>
                                   <tbody>
@@ -125,15 +119,27 @@
                           var results = $.parseJSON(data);
 
                           $.each(results, function(key, value) {
-                                console.log(value);
-                                var userOutput = `
-                                    <tr class="directory-search-result">
-                                        <td><a id="profile-link" href="/profile/${value.username}/">${value.first_name} ${value.last_name}</a></td>
-                                        <td>${value.hr_job_title}</td>
-                                        <td>${value.department}</td>
-                                        <td>${value.building}</td>
-                                    </tr>
-                                `
+                                if (formType == 'advanced') {
+                                    var userOutput = `
+                                        <tr class="directory-search-result">
+                                            <td><a id="profile-link" href="/profile/${value.username}/">${value.first_name} ${value.last_name}</a></td>
+                                            <td>${value.hr_job_title}</td>
+                                            <td>${value.office_phone}</td>
+                                            <td>${value.department}</td>
+                                            <td>${value.building}</td>
+                                            <td>${value.mail_stop}</td>
+                                        </tr>
+                                    `
+                                } else {
+                                    var userOutput = `
+                                        <tr class="directory-search-result">
+                                            <td><a id="profile-link" href="/profile/${value.username}/">${value.first_name} ${value.last_name}</a></td>
+                                            <td>${value.hr_job_title}</td>
+                                            <td>${value.department}</td>
+                                            <td>${value.building}</td>
+                                        </tr>
+                                    `
+                                }
                                 $('#whoi-directory-search-results tbody').append( userOutput );
                           });
                       } else {
