@@ -151,7 +151,7 @@ class Whoi_Directory_Search_Public {
 	}
 
     /**
-	 * Return display template for people by deparment shortcode
+	 * Return display template for people by department shortcode
 	 *
 	 * @since 		1.0.0
 	 * @return 		void
@@ -167,6 +167,55 @@ class Whoi_Directory_Search_Public {
         curl_setopt($ch, CURLOPT_URL, "https://directory.whoi.edu/wp-json/whoi_directory/v1/users/department/" . $atts['department_code']);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+
+        /* Authorization with JWT tokens
+        $headers = array();
+        $headers[] = "Accept: application/json";
+        $headers[] = "Authorization: Bearer APIKEY";
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        */
+
+        $result = curl_exec($ch);
+
+        if (curl_errno($ch)) {
+            return 'Error:' . curl_error($ch);
+        }
+
+        curl_close ($ch);
+
+        $users = json_decode($result);
+
+        // Start output buffering for shortcode display
+        ob_start();
+		include( plugin_dir_path( __FILE__ ) . 'partials/whoi-directory-department-users-display.php' );
+        return ob_get_clean();
+
+	}
+
+    /**
+	 * Return display template for people by department and job category shortcode
+	 *
+	 * @since 		1.0.0
+	 * @return 		void
+	 */
+	public function people_by_department_job_category_display( $atts ) {
+
+        $atts = shortcode_atts( array(
+    		'search_dept'  => 'Biology',
+            'search_job_category' => 'Scientific Staff',
+    	), $atts, 'whoi_directory_people_by_department_job_category' );
+
+        $ch = curl_init();
+
+        $post = [
+            'search_dept' => $atts['search_dept'],
+            'search_job_category' => $atts['search_job_category'],
+        ];
+
+        curl_setopt($ch, CURLOPT_URL, "https://directory.whoi.edu/wp-json/whoi_directory/v1/users/department-people/");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
 
         /* Authorization with JWT tokens
         $headers = array();
@@ -251,6 +300,7 @@ class Whoi_Directory_Search_Public {
     	add_shortcode( 'whoi_directory_search_form', array( $this, 'search_form_display' ) );
         add_shortcode( 'whoi_directory_search_advanced_form', array( $this, 'search_advanced_form_display' ) );
         add_shortcode( 'whoi_directory_people_by_department', array( $this, 'people_by_department_display' ) );
+        add_shortcode( 'whoi_directory_people_by_department_job_category', array( $this, 'people_by_department_job_category_display' ) );
 
     } // register_shortcodes()
 

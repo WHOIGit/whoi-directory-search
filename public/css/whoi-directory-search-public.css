@@ -170,8 +170,8 @@
     margin: 1.5em 0 .25em 0;
 }
 
-.staff-profile br {
-    display: none;
+.staff-profile p,  .staff-profile span {
+    font-family: 'Open Sans',sans-serif !important;
 }
 
 .cv a {

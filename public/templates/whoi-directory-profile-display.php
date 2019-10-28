@@ -78,6 +78,9 @@ if ( !empty( get_query_var( 'username' ) ) ) {
                     var output_education = '';
                     var working_title = '';
                     var website = '';
+                    var other_info = '';
+                    var description = '';
+                    var research_statement = '';
 
                     if (value.photo) {
                         var output_photo = `<img src="${value.photo.guid}" class="attachment-medium size-medium">`
@@ -103,6 +106,18 @@ if ( !empty( get_query_var( 'username' ) ) ) {
                         var website = `<p><strong>Website:</strong> <a href="${value.website}" target="_blank">${value.website}</a></p>`
                     }
 
+                    if (value.other_info) {
+                        var other_info = `<p>${value.other_info}</p>`
+                    }
+
+                    if (value.description) {
+                        var description = `<p>${value.description}</p>`
+                    }
+
+                    if (value.research_statement) {
+                        var research_statement = `<h3>Research Statement</h3> <p>${value.research_statement}</p>`
+                    }
+
                     const htmlOutput = `
                             <div class="staff-image">
                                 ${output_photo}
@@ -120,7 +135,9 @@ if ( !empty( get_query_var( 'username' ) ) ) {
                                 ${website}
                                 ${output_site}
                                 ${output_education}
-                                ${value.other_info}
+                                ${research_statement}
+                                ${other_info}
+                                ${description}
                             </div>`;
                     $('#whoi-directory-profile').html( htmlOutput );
                 });
