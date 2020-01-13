@@ -6,7 +6,6 @@
 
 if ( !empty( get_query_var( 'username' ) ) ) {
 	$username = get_query_var( 'username' );
-
 }
 
 ?>
@@ -131,13 +130,13 @@ if ( !empty( get_query_var( 'username' ) ) ) {
                                 <p><strong>Email:</strong> <a href="mailto:${value.user_email}">${value.user_email}</a></p>
                                 <p><strong>Phone:</strong> ${value.office_phone}</p>
                                 <p><strong>Address:</strong> ${value.building} ${value.office}, Mail Stop: ${value.mail_stop}</p>
+                                ${description}
                                 ${output_cv}
                                 ${website}
                                 ${output_site}
                                 ${output_education}
                                 ${research_statement}
                                 ${other_info}
-                                ${description}
                             </div>`;
                     $('#whoi-directory-profile').html( htmlOutput );
                 });

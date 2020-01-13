@@ -66,7 +66,7 @@
             var searchMailstop = $('#search_mail_stop').val();
 
             if ( searchTerms || searchDept || searchBuilding || searchPhone || searchPosition || searchMailstop ) {
-                var data = {user_search_terms: searchTerms, search_dept: searchDept, search_building: searchBuilding, search_position: searchPosition, search_phone: searchPhone, search_mail_stop: searchMailstop} ;
+                var data = {user_search_terms: searchTerms, search_dept: searchDept, search_building: searchBuilding, search_position: searchPosition, search_phone: searchPhone, search_mail_stop: searchMailstop, form_type: formType} ;
                 // Set sessionStorage variable to track the search terms for Back buttons
                 sessionStorage.setItem('formType', formType);
                 sessionStorage.setItem('staffSearch', searchTerms);
