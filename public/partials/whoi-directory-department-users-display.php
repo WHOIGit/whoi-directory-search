@@ -25,15 +25,13 @@
             </tr>
         </thead>
         <tbody>
-            <?php if ($users) : ?>
-                <?php foreach ($users as $user) : ?>
-                    <tr>
-                        <td><a href="/profile/<?php echo $user->username ?>/"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a></td>
-                        <td><?php echo $user->hr_job_title ?></td>
-                        <td><?php echo $user->building ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php endif; ?>
+            <?php foreach ($users as $user) : ?>
+                <tr>
+                    <td><a href="/profile/<?php echo $user->username ?>/"><?php echo $user->first_name ?> <?php echo $user->last_name ?></a></td>
+                    <td><?php echo $user->hr_job_title ?></td>
+                    <td><?php echo $user->building ?></td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 

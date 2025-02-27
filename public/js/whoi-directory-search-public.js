@@ -66,7 +66,7 @@
             var searchMailstop = $('#search_mail_stop').val();
 
             if ( searchTerms || searchDept || searchBuilding || searchPhone || searchPosition || searchMailstop ) {
-                var data = {user_search_terms: searchTerms, search_dept: searchDept, search_building: searchBuilding, search_position: searchPosition, search_phone: searchPhone, search_mail_stop: searchMailstop, form_type: formType} ;
+                var data = {user_search_terms: searchTerms, search_dept: searchDept, search_building: searchBuilding, search_position: searchPosition, search_phone: searchPhone, search_mail_stop: searchMailstop} ;
                 // Set sessionStorage variable to track the search terms for Back buttons
                 sessionStorage.setItem('formType', formType);
                 sessionStorage.setItem('staffSearch', searchTerms);
@@ -119,10 +119,20 @@
                           var results = $.parseJSON(data);
 
                           $.each(results, function(key, value) {
+				var preferred_pronouns = '';
+                                var preferred_name = '';
+                                if (value.preferred_pronouns) {
+                                    var preferred_pronouns = '('+value.preferred_pronouns+')'
+                                }
+                                if (value.preferred_name) {
+                                    var preferred_name = value.preferred_name
+                                } else {
+                                    var preferred_name = value.first_name+' '+value.last_name
+                                }
                                 if (formType == 'advanced') {
                                     var userOutput = `
                                         <tr class="directory-search-result">
-                                            <td><a id="profile-link" href="/profile/${value.username}/">${value.first_name} ${value.last_name}</a></td>
+                                            <td><a id="profile-link" href="/profile/${value.username}/">${preferred_name} ${preferred_pronouns}</a></td>
                                             <td>${value.hr_job_title}</td>
                                             <td>${value.office_phone}</td>
                                             <td>${value.department}</td>
@@ -133,7 +143,7 @@
                                 } else {
                                     var userOutput = `
                                         <tr class="directory-search-result">
-                                            <td><a id="profile-link" href="/profile/${value.username}/">${value.first_name} ${value.last_name}</a></td>
+                                            <td><a id="profile-link" href="/profile/${value.username}/">${preferred_name} ${preferred_pronouns}</a></td>
                                             <td>${value.hr_job_title}</td>
                                             <td>${value.department}</td>
                                             <td>${value.building}</td>

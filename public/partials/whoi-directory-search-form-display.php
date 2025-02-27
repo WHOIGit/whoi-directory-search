@@ -46,6 +46,7 @@ $whoi_directory_search_nonce = wp_create_nonce( 'whoi_directory_search_nonce' );
                 <option value="GRANTS AND CONTRACTS">Grants And Contracts</option>
                 <option value="HUMAN RESOURCES">Human Resources</option>
                 <option value="INFORMATION SERVICES">Information Services</option>
+                <option value="INSTITUTION DIRECTORATE">Institution Directorate</option>
                 <option value="LIBRARY">Library</option>
                 <option value="MARINE CHEMISTRY &amp; GEOCHEMISTRY">Marine Chemistry &amp; Geochemistry</option>
                 <option value="MARINE POLICY CENTER">Marine Policy Center</option>

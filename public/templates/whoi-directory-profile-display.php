@@ -6,6 +6,7 @@
 
 if ( !empty( get_query_var( 'username' ) ) ) {
 	$username = get_query_var( 'username' );
+
 }
 
 ?>
@@ -70,7 +71,8 @@ if ( !empty( get_query_var( 'username' ) ) ) {
 
               $.each(results, function(key, value) {
                     console.log(value);
-
+		            var preferred_pronouns = '';
+                    var preferred_name = '';
                     var output_photo = '';
                     var output_cv = '';
                     var output_site = '';
@@ -80,7 +82,16 @@ if ( !empty( get_query_var( 'username' ) ) ) {
                     var other_info = '';
                     var description = '';
                     var research_statement = '';
-
+	
+	            
+                    if (value.preferred_pronouns) {
+                        var preferred_pronouns = `(${value.preferred_pronouns})`
+                    }
+                    if (value.preferred_name) {
+                        var preferred_name = ` ${value.preferred_name}`
+                    } else {
+                        var preferred_name = '${value.first_name} ${value.last_name}'
+                    }
                     if (value.photo) {
                         var output_photo = `<img src="${value.photo.guid}" class="attachment-medium size-medium">`
                     }
@@ -123,13 +134,13 @@ if ( !empty( get_query_var( 'username' ) ) ) {
                             </div>
 
                             <div class="staff-profile">
-                                <h2 data-swiftype-name="title" data-swiftype-type="string">${value.first_name} ${value.last_name}</h2>
+                                <h2 data-swiftype-name="title" data-swiftype-type="string">${preferred_name} ${preferred_pronouns}</h2>
                                 <p> ${value.hr_job_title}</p>
                                 ${working_title}
                                 <p>${value.department}</p>
                                 <p><strong>Email:</strong> <a href="mailto:${value.user_email}">${value.user_email}</a></p>
                                 <p><strong>Phone:</strong> ${value.office_phone}</p>
-                                <p><strong>Address:</strong> ${value.building} ${value.office}, Mail Stop: ${value.mail_stop}</p>
+                                <p><strong>Address:</strong> ${value.building}, Mail Stop: ${value.mail_stop}</p>
                                 ${description}
                                 ${output_cv}
                                 ${website}
@@ -138,7 +149,11 @@ if ( !empty( get_query_var( 'username' ) ) ) {
                                 ${research_statement}
                                 ${other_info}
                             </div>`;
+                    const title = `Woods Hole Oceanographic Institution - ${preferred_name}`;
+                    const metaDesc = `Staff profile page for ${preferred_name}, ${working_title}`;
                     $('#whoi-directory-profile').html( htmlOutput );
+                    $('title').html(title);
+                    $("meta[name='description']").attr('content', metaDesc);
                 });
           })
           .catch(error => console.error('Error:', error));
